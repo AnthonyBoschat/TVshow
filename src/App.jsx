@@ -6,7 +6,7 @@ import { Details } from "./pages/details"
 import { SignIn } from "./pages/auth/SignIn"
 import { SignUp } from "./pages/auth/SignUp"
 import { ROUTES } from "./core/Routes"
-import { AuthLayout } from "./layout/Auth"
+import { AuthLayout } from "./layout/auth"
 import { AppLayout } from "./layout/App"
 
 
