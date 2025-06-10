@@ -1,4 +1,4 @@
-export const ROUTES = {
+export const ROUTES = Object.freeze({
     APP:{
         ROOT:"/",
         HOME:"/",
@@ -9,4 +9,4 @@ export const ROUTES = {
         SIGNIN:"/auth/signin",
         SIGNUP:"/auth/signup",
     }
-}
+})
