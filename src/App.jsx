@@ -3,11 +3,11 @@ import { BrowserRouter } from "react-router"
 import { Home } from "./pages/home"
 import { NotFound } from "./pages/404"
 import { Details } from "./pages/details"
-import { AuthLayout } from "./layout/Auth"
-import { AppLayout } from "./layout/App"
 import { SignIn } from "./pages/auth/SignIn"
 import { SignUp } from "./pages/auth/SignUp"
 import { ROUTES } from "./core/Routes"
+import { AuthLayout } from "./layout/Auth"
+import { AppLayout } from "./layout/App"
 
 
 
