@@ -1,5 +1,6 @@
 import { Rating } from "../../../../components/rating";
 import s from "./style.module.scss";
+import info from "../../../../core/assets/info.png"
 
 export function ShowPresentation({show}){
 
@@ -16,6 +17,10 @@ export function ShowPresentation({show}){
 
             <div className={s.description}>
                 {show.overview}
+            </div>
+
+            <div className={s.more_info}>
+                more info <img src={info} alt="" />
             </div>
         </div>
     )
