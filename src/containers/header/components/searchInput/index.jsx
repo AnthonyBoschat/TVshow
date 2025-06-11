@@ -5,11 +5,13 @@ import { callAPI } from "../../../../core/fetch";
 import { ENDPOINTS } from "../../../../core/enpoints";
 import { ROUTES } from "../../../../core/Routes";
 import { toast } from "react-toastify";
+import { useShow } from "../../../../core/services/useShow";
 
 
 export function SearchInput({formRef}){
 
     const navigate = useNavigate()
+    const {findFirstValidShow} = useShow()
 
 
     const handleSearch = async(event) => {
@@ -22,7 +24,12 @@ export function SearchInput({formRef}){
                 toast.error("No show found with this title")
                 return
             }
-            const newShow = datas.results[0]
+            const newShow = findFirstValidShow(datas.results)
+            if(!newShow){
+                toast.error("No show found with this title")
+                return
+            }
+            console.log("newShow", newShow)
             navigate(ROUTES.SHOW.replace(":id", newShow.id))
         }
     }
