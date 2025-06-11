@@ -1,9 +1,13 @@
 import { Rating } from "../../../../components/rating";
 import s from "./style.module.scss";
 import info from "../../../../core/assets/info.png"
+import { useLocation, useNavigate } from "react-router";
+import { ROUTES } from "../../../../core/Routes";
 
 export function ShowPresentation({show}){
 
+    const navigate = useNavigate()
+    const location = useLocation()
 
     return(
         <div className={s.show_presentation_container}>
@@ -19,9 +23,11 @@ export function ShowPresentation({show}){
                 {show.overview}
             </div>
 
-            <div className={s.more_info}>
-                more info <img src={info} alt="" />
-            </div>
+            {!location.pathname.startsWith("/detail") && (
+                <div onClick={() => navigate(ROUTES.DETAIL.replace(":id", show.id))} className={s.more_info}>
+                    more info <img src={info} alt="" />
+                </div>
+            )}
         </div>
     )
 }
