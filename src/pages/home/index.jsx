@@ -2,6 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import s from "./style.module.scss";
 import { callAPI } from "../../core/fetch";
 import { ENDPOINTS } from "../../core/enpoints";
+import { Rating } from "react-simple-star-rating";
+import { BackgroundImage } from "./components/backgroundImage";
+import { ShowPresentation } from "./components/showPresentation";
+import { Recommendations } from "./components/recommendations";
 
 export function HomePage(){
 
@@ -9,40 +13,52 @@ export function HomePage(){
     const [recommendations, setRecommendation] = useState([])
     const [selectedShowID, setSelectedShowID] = useState(null)
 
-    // const backgroundImage = useMemo(() => )
+    const backgroundImage = useMemo(() => ENDPOINTS.IMAGE.BIG(show?.backdrop_path) ,[show])
 
-    const findTheMostPopularShow = (shows) => {
-        const mostPopularShow = shows.reduce((acc, show) => show.popularity > acc.popularity ? show : acc, {popularity:0})
-        return mostPopularShow
-    }
+    useEffect(() => {
+        loadShow()
+    }, [])
 
+    useEffect(() => {
+        if(show){
+            loadRecommendations()
+        }
+    }, [show])
     
-    
-    const loadData = async() => {
+    const loadShow = async() => {
         const endpointToCall = selectedShowID ? ENDPOINTS.SHOW_BY_ID(selectedShowID) : ENDPOINTS.POPULAR_SHOWS
         const datas = await callAPI({endpoint:endpointToCall})
         if(!selectedShowID){
-            const mostPopularShow = findTheMostPopularShow(datas.results)
+            const mostPopularShow = getMostPopularShow(datas.results)
             setShow(mostPopularShow)
-            const recommendations = await callAPI({endpoint:ENDPOINTS.RECOMMENDATION_BY_SHOW_ID(mostPopularShow.id)})
-            setRecommendation(recommendations.results)
             return
         }
     }
-    useEffect(() => {
-        loadData()
-    }, [])
+
+    const loadRecommendations = async() => {
+        const recommendations = await callAPI({endpoint:ENDPOINTS.RECOMMENDATION_BY_SHOW_ID(show.id)})
+        setRecommendation(recommendations.results)
+    }
+
+    const getMostPopularShow = (shows) => {
+        const mostPopularShow = shows.reduce((acc, show) => show.popularity > acc.popularity ? show : acc, {popularity:0})
+        return mostPopularShow
+    }
+    
 
     useEffect(() => {
         console.log({
             show,
-            recommendations
+            recommendations, 
+            backgroundImage
         })
-    }, [show, recommendations])
+    }, [show, recommendations, backgroundImage])
 
     return(
-        <>
-            HomePage
-        </>
+        <div id={s.container}>
+            {backgroundImage && <BackgroundImage backgroundImage={backgroundImage}/>}
+            {show && <ShowPresentation show={show} />}
+            {recommendations && <Recommendations recommendations={recommendations} />}
+        </div>
     )
 }
