@@ -13,10 +13,14 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+
           <Route path={ROUTES.HOME} element={<HomeLayout/>}>
+
             <Route index element={<HomePage/>} />
             <Route path={ROUTES.SHOW} element={<HomePage/>} />
+            
           </Route>
+
         </Routes>
       </BrowserRouter>
 

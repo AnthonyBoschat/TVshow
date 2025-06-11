@@ -6,6 +6,7 @@ import { ENDPOINTS } from "../../../../core/enpoints";
 import { ROUTES } from "../../../../core/Routes";
 import { toast } from "react-toastify";
 import { useShow } from "../../../../core/services/useShow";
+import { Input } from "../../../../components/input";
 
 
 export function SearchInput({formRef}){
@@ -37,8 +38,13 @@ export function SearchInput({formRef}){
 
     return(
         <form ref={formRef} onSubmit={handleSearch} className={s.container}>
-            <img src={search} alt="" />
-            <input name="search" placeholder="Search a tv show you may like" type="text" />
+            
+            <Input 
+                icon={<img src={search} alt="" />}
+                name={"search"}
+                placeholder="Search a tv show you may like"
+                className={s.search_input}
+            />
         </form>
     )
 }
