@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path={ROUTES.HOME} element={<HomeLayout/>}>
             <Route path={ROUTES.HOME} element={<HomePage/>} />
+            <Route path={ROUTES.SHOW} element={<HomePage/>} />
           </Route>
         </Routes>
       </BrowserRouter>

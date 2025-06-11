@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Thumbnail } from "../thumbnail";
 import s from "./style.module.scss";
 
-export function Recommendations({recommendations}){
+export function Recommendations({recommendations, onClick}){
 
     const recomandationsListRef = useRef(null)
 

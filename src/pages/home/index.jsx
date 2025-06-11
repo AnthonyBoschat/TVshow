@@ -6,18 +6,29 @@ import { Rating } from "react-simple-star-rating";
 import { BackgroundImage } from "./components/backgroundImage";
 import { ShowPresentation } from "./components/showPresentation";
 import { Recommendations } from "./components/recommendations";
+import { useParams } from "react-router";
 
 export function HomePage(){
 
-    const [show, setShow] = useState(null)
-    const [recommendations, setRecommendation] = useState([])
-    const [selectedShowID, setSelectedShowID] = useState(null)
+    const {id}  = useParams()
+    const [show, setShow]                       = useState(null)
+    const [recommendations, setRecommendation]  = useState([])
+    const [selectedShowID, setSelectedShowID]   = useState(id)
 
-    const backgroundImage = useMemo(() => ENDPOINTS.IMAGE.BIG(show?.backdrop_path) ,[show])
+    const filteredRecommendations   = useMemo(() => recommendations.filter(show => show?.backdrop_path || show?.poster_path) ,[recommendations])
+    const backgroundImage           = useMemo(() => ENDPOINTS.IMAGE.BIG(show?.backdrop_path) ,[show])
 
     useEffect(() => {
         loadShow()
-    }, [])
+    }, [selectedShowID])
+
+    useEffect(() => {
+        if(id){
+            setSelectedShowID(id)
+        }else{
+            setSelectedShowID(null)
+        }
+    }, [id])
 
     useEffect(() => {
         if(show){
@@ -27,10 +38,15 @@ export function HomePage(){
     
     const loadShow = async() => {
         const endpointToCall = selectedShowID ? ENDPOINTS.SHOW_BY_ID(selectedShowID) : ENDPOINTS.POPULAR_SHOWS
+        console.log("debug 1 selectedShowID", selectedShowID)
         const datas = await callAPI({endpoint:endpointToCall})
         if(!selectedShowID){
             const mostPopularShow = getMostPopularShow(datas.results)
             setShow(mostPopularShow)
+            return
+        }else{
+            console.log("coucou", datas)
+            setShow(datas)
             return
         }
     }
@@ -58,7 +74,7 @@ export function HomePage(){
         <div id={s.container}>
             {backgroundImage && <BackgroundImage backgroundImage={backgroundImage}/>}
             {show && <ShowPresentation show={show} />}
-            {recommendations && <Recommendations recommendations={recommendations} />}
+            {filteredRecommendations && <Recommendations recommendations={filteredRecommendations} />}
         </div>
     )
 }
