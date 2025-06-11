@@ -1,8 +1,9 @@
 import { toast } from "react-toastify";
 
 export async function callAPI({
-    endpoint    = null,
-    returnValue = [],
+    endpoint            = null,
+    returnValue         = [],
+    defaultMessage      = null
 }){
     try{
         if(!endpoint){
@@ -14,7 +15,7 @@ export async function callAPI({
         const data      = await response.json()
         return data
     }catch(error){
-        const message = error.message ? error.message : "An error has occurred, please try again"
+        const message = defaultMessage ? defaultMessage : error.message ? error.message : "An error has occurred, please try again"
         toast.error(message)
         return returnValue
     }

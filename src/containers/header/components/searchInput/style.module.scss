@@ -1,35 +1,4 @@
-#container{
-    // outline: 1px solid blue;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 0rem 4rem;
-
-    .logo{
-        display: flex;
-        flex-direction: column;
-        color: white;
-        >span{
-            display: flex;
-            align-items: end;
-            img{
-                height: 2rem;
-            }
-            &.detail{
-                font-size: 0.8rem;
-            }
-            &.title{
-                &:hover{
-                    cursor: pointer;
-                }
-            }
-        }
-        
-    }
-
-    .nav{
-        .input_container{
+.container{
             position: relative;
             outline: 1px solid;
             input{
@@ -61,5 +30,3 @@
                 opacity: 0.6;
             }
         }
-    }
-}

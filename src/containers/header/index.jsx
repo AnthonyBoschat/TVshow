@@ -1,17 +1,24 @@
 import s from "./style.module.scss";
 import logo from "../../core/assets/logo.png"
-import { useNavigate } from "react-router";
 import { ROUTES } from "../../core/routes";
+import { SearchInput } from "./components/searchInput";
+import { useNavigate } from "react-router";
+import { useRef } from "react";
 
 export function Header(){
 
     const navigate = useNavigate()
+    const formRef = useRef(null)
 
+    const returnHome = () => {
+        formRef.current.reset()
+        navigate(ROUTES.HOME)
+    }
 
     return(
         <header id={s.container}>
             <div className={s.logo}>
-                <span onClick={() => navigate(ROUTES.HOME)} className={s.title}>
+                <span onClick={returnHome} className={s.title}>
                     <img src={logo} alt="Logo of the application" />
                     Watowatch
                 </span>
@@ -19,7 +26,7 @@ export function Header(){
             </div>
 
             <div className={s.nav}>
-                <input type="text" />
+                <SearchInput formRef={formRef}/>
             </div>
         </header>
     )
