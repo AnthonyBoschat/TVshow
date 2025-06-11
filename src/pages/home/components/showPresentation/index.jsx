@@ -1,3 +1,4 @@
+import { Rating } from "../../../../components/rating";
 import s from "./style.module.scss";
 
 export function ShowPresentation({show}){
@@ -9,7 +10,7 @@ export function ShowPresentation({show}){
             <div className={s.title}>
                 <h1>{show.name}</h1>
                 <div className={s.rating}>
-                    rating
+                    <Rating rate={show.vote_average}/>
                 </div>
             </div>
 

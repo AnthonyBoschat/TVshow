@@ -1,0 +1,21 @@
+.rate_container{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 0.5rem;
+
+    .star_container{
+        display: flex;
+        gap: 2px;
+        align-items: center;
+    }
+
+    .star{
+        // outline: 1px solid red;
+        font-size: 20px;
+    }
+    .rate{
+        padding-top: 0.2rem;
+        // outline: 1px solid white;
+    }
+}
