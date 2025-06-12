@@ -36,6 +36,7 @@
         ul{
             display: flex;
             list-style: none;
+            gap: 1rem;
             max-width: 100%;
             .li_created_by{
                 background-color: rgba(255, 255, 255, 0.9);
@@ -53,7 +54,7 @@
             display: flex;
             list-style: none;
             max-width: 100%;
-            gap: 2rem;
+            gap: 1rem;
             .li_infos{
                 background-color: rgba(255, 255, 255, 0.9);
                 color: black;

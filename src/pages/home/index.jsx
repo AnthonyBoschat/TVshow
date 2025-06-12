@@ -23,11 +23,7 @@ export function HomePage(){
     }, [selectedShowID])
 
     useEffect(() => {
-        if(id){
-            setSelectedShowID(id)
-        }else{
-            setSelectedShowID(null)
-        }
+        setSelectedShowID(id ? id : null)
     }, [id])
 
     useEffect(() => {
@@ -38,14 +34,12 @@ export function HomePage(){
     
     const loadShow = async() => {
         const endpointToCall = selectedShowID ? ENDPOINTS.SHOW_BY_ID(selectedShowID) : ENDPOINTS.POPULAR_SHOWS
-        console.log("debug 1 selectedShowID", selectedShowID)
         const datas = await callAPI({endpoint:endpointToCall})
         if(!selectedShowID){
             const mostPopularShow = getMostPopularShow(datas.results)
             setShow(mostPopularShow)
             return
         }else{
-            console.log("coucou", datas)
             setShow(datas)
             return
         }
@@ -60,15 +54,6 @@ export function HomePage(){
         const mostPopularShow = shows.reduce((acc, show) => show.popularity > acc.popularity ? show : acc, {popularity:0})
         return mostPopularShow
     }
-    
-
-    useEffect(() => {
-        console.log({
-            show,
-            recommendations, 
-            backgroundImage
-        })
-    }, [show, recommendations, backgroundImage])
 
     return(
         <div id={s.container}>

@@ -1,5 +1,4 @@
 const API_KEY = import.meta.env.VITE_API_KEY
-console.log(API_KEY)
 
 export const ENDPOINTS = Object.freeze({
     SHOW_BY_TITLE: (title) => `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${title}`,

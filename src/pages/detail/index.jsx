@@ -30,23 +30,11 @@ export function DetailPage(){
         loadData()
     }, [])
 
-    useEffect(() => {
-        console.log({
-            show,
-            cast,
-            infos,
-            createBy
-        })
-    }, [cast, infos, createBy])
-
     const loadData = async() => {
         const datas = await callAPI({endpoint:ENDPOINTS.SHOW_BY_ID(id)})
         setShow(datas)
     }
 
-    
-
-    console.log(id)
     return(
         <div id={s.main_container}>
             <div id={s.container}>

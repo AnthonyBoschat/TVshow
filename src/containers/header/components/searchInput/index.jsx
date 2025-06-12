@@ -30,7 +30,6 @@ export function SearchInput({formRef}){
                 toast.error("No show found with this title")
                 return
             }
-            console.log("newShow", newShow)
             navigate(ROUTES.SHOW.replace(":id", newShow.id))
         }
     }
