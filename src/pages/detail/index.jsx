@@ -7,7 +7,7 @@ import { ENDPOINTS } from "../../core/enpoints";
 import { Section } from "./components/section";
 import left from "../../core/assets/left.png"
 import { BackgroundImage } from "../home/components/backgroundImage";
-import { ROUTES } from "../../core/Routes";
+import { ROUTES } from "../../core/routes.js";
 
 export function DetailPage(){
 

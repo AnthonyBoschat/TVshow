@@ -3,7 +3,7 @@ import search from "../../../../core/assets/search.png";
 import { useNavigate } from "react-router";
 import { callAPI } from "../../../../core/fetch";
 import { ENDPOINTS } from "../../../../core/enpoints";
-import { ROUTES } from "../../../../core/Routes";
+import { ROUTES } from "../../../../core/routes.js";
 import { toast } from "react-toastify";
 import { useShow } from "../../../../core/services/useShow";
 import { Input } from "../../../../components/input";

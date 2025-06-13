@@ -2,7 +2,7 @@ import { Rating } from "../../../../components/rating";
 import s from "./style.module.scss";
 import info from "../../../../core/assets/info.png"
 import { useLocation, useNavigate } from "react-router";
-import { ROUTES } from "../../../../core/Routes";
+import { ROUTES } from "../../../../core/routes.js";
 
 export function ShowPresentation({show}){
 

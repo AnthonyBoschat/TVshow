@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router"
 import "./App.scss"
-import { ROUTES } from "./core/Routes"
+import { ROUTES } from "./core/routes.js"
 import { HomePage } from "./pages/home"
 import { HomeLayout } from "./layout/home"
 import { ToastContainer } from "react-toastify"

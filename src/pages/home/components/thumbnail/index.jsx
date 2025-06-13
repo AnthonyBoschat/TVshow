@@ -3,7 +3,7 @@ import { ENDPOINTS } from "../../../../core/enpoints";
 import s from "./style.module.scss";
 import showMore from "../../../../core/assets/show.png"
 import { useNavigate } from "react-router";
-import { ROUTES } from "../../../../core/routes";
+import { ROUTES } from "../../../../core/routes.js";
 
 export function Thumbnail({show}){
 
