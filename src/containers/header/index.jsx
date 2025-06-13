@@ -1,6 +1,6 @@
 import s from "./style.module.scss";
 import logo from "../../core/assets/logo.png"
-import { ROUTES } from "../../core/routes";
+import { ROUTES } from "../../core/routes.js";
 import { SearchInput } from "./components/searchInput";
 import { useNavigate } from "react-router";
 import { useRef } from "react";
